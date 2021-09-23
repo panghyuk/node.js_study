@@ -112,14 +112,21 @@ const relationship2 = {
 
 relationship2.logFriends();
 
-// 구조분해 할당
+// 구조분해 할당 -> this 있을 때 웬만하면 사용 X
 const example = {a : 123, b : {c : 135, d : 146}}
 const a = example.a;
 const d = example.b.d;
 
 const {a, b : {d}} = example;
 console.log(a); // 123
-console.log(d); //146
+console.log(d); // 146
+
+arr = [1,2,3,4,5]
+const x = arr[0];
+const y = arr[1];
+const z = arr[4];
+
+const [x, y, , , z] = arr;
 
 // ex1
 var candyMachine = {
@@ -136,4 +143,19 @@ var candyMachine = {
 var getCandy = candyMachine.getCandy;
 var count = candyMachine.status.count;
 
-// 클래스
+// 클래스 == 프로토타입
+class Human {
+    constructor(type = 'human') {
+        this.type = type;
+    }
+
+    static isHuman(human) {
+        return human instanceof Human;
+    }
+
+    breathe() {
+        alert('h-a-a-a-m');
+    }
+}
+
+// Promise, Async, Await
