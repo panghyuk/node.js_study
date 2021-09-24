@@ -66,6 +66,7 @@ var result = "이 과자는 " + won + '원입니다.';
 
 const result = `이 과자는 ${won}원입니다.`
 
+
 // 화살표 함수
 function add1(x,y) {
     return x+y;
@@ -85,6 +86,7 @@ function not1(x) {
 
 const not2 = x => !x;
 
+
 // ex1
 var relationship1 = {
     name:'zero',
@@ -99,6 +101,7 @@ var relationship1 = {
 
 relationship1.logFriends();
 
+
 // ex2
 const relationship2 = {
     name:'zero',
@@ -111,6 +114,7 @@ const relationship2 = {
 }
 
 relationship2.logFriends();
+
 
 // 구조분해 할당 -> this 있을 때 웬만하면 사용 X
 const example = {a : 123, b : {c : 135, d : 146}}
@@ -128,6 +132,7 @@ const z = arr[4];
 
 const [x, y, , , z] = arr;
 
+
 // ex1
 var candyMachine = {
     status: {
@@ -142,6 +147,7 @@ var candyMachine = {
 
 var getCandy = candyMachine.getCandy;
 var count = candyMachine.status.count;
+
 
 // 클래스 == 프로토타입
 class Human {
@@ -158,4 +164,35 @@ class Human {
     }
 }
 
-// Promise, Async, Await
+
+// Promise
+const condition = true; // true면 resolve, false면 reject
+const promise = new Promise((resolve, reject) => {
+  if (condition) {
+    resolve('성공');
+  } else {
+    reject('실패');
+  }
+});
+// 다른 코드가 들어갈 수 있음
+promise
+  .then((message) => {
+    console.log(message); // 성공(resolve)한 경우 실행
+  })
+  .catch((error) => {
+    console.error(error); // 실패(reject)한 경우 실행
+  })
+  .finally(() => { // 끝나고 무조건 실행
+    console.log('무조건');
+  });
+
+
+// Async, Await
+async function findAndSaveUser(Users) {
+    let user = await Users.findOne({});
+    user.name = 'zero';
+    user = await user.save();
+    user = await Users.findOne({ gender: 'm' });
+    // 생략
+  }
+  
